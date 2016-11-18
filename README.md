@@ -1,1 +1,1 @@
-# lambda-starter
+# react-native-lambda-starter
