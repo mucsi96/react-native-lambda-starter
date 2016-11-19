@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    main: './index.web.js',
+    main: './src/client/index.web.js',
   },
   module: {
     loaders: [

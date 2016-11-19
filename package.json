@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start:android": "node node_modules/react-native/local-cli/cli.js run-android",
-    "start": "webpack-dev-server --inline --open"
+    "start": "webpack-dev-server --hot --inline --content-base src/client --port 8082 --open"
   },
   "dependencies": {
     "react": "15.3.1",
