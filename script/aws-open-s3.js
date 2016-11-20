@@ -1,6 +1,7 @@
 const program = require('commander');
 const exec = require('child_process').execSync;
 const open = require('opn');
+const awsResource = require('./aws-resource');
 
 program
   .arguments('<bucket_name>')
@@ -12,7 +13,9 @@ program.parse(process.argv);
 
 
 function getAwsS3Endpoint (bucketName) {
-  const region = exec(`aws configure get region`).toString().trim();
-  const endpoint = `http://${bucketName}.s3-website.${region}.amazonaws.com`;
-  open(endpoint);
+  const bucket = awsResource.getResource('s3-bucket');
+  if (!bucket) {
+    return console.error(`AWS S3 bucket ${bucketName} is not created yet!`);
+  }
+  open(bucket.endpoint);
 }

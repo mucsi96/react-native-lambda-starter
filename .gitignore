@@ -1,4 +1,5 @@
 dist
+.aws-resources
 # OSX
 #
 .DS_Store
