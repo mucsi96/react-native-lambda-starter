@@ -11,8 +11,8 @@ program
     const createUserPoolClientResult = exec(`aws cognito-idp create-user-pool-client --user-pool-id ${userPoolId} --client-name ${clientName}`);
     const clientId = createUserPoolClientResult.toString().split('\t')[1];
     awsResource.createResource('cognito-user-pool', {
-      userPoolId,
-      clientId
+      UserPoolId: userPoolId,
+      ClientId: clientId
     });
   });
 

@@ -12,6 +12,7 @@
     "open:prod": "node script/aws-open-s3 react-native-lambda-starter"
   },
   "dependencies": {
+    "amazon-cognito-identity-js": "^1.7.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",
     "react-native": "0.37.0",
@@ -23,6 +24,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-native": "1.9.0",
     "copy-webpack-plugin": "^4.0.1",
+    "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
     "opn": "^4.0.2",
     "opn-cli": "^3.1.0",

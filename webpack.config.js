@@ -20,7 +20,8 @@ module.exports = {
           presets: ['es2015', 'react'],
         },
       },
-    ],
+      { test: /\.json$/, loader: 'json-loader' }
+    ]
   },
   resolve: {
     alias: {
