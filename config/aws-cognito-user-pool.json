@@ -1,0 +1,19 @@
+{
+    "PoolName": "react-native-lambda-starter",
+    "Policies": {
+        "PasswordPolicy": {
+            "MinimumLength": 6,
+            "RequireUppercase": false,
+            "RequireLowercase": false,
+            "RequireNumbers": false,
+            "RequireSymbols": false
+        }
+    },
+    "AutoVerifiedAttributes": [
+        "email"
+    ],
+    "AliasAttributes": [
+        "email",
+        "preferred_username"
+    ]
+}

@@ -6,6 +6,7 @@
     "start:android": "node node_modules/react-native/local-cli/cli.js run-android",
     "start": "webpack-dev-server --hot --inline --content-base src/client --port 8082 --open",
     "aws:create-s3-bucket": "node script/aws-create-s3-bucket react-native-lambda-starter",
+    "aws:create-cognito-user-pool": "node script/aws-create-cognito-user-pool config/aws-cognito-user-pool.json",
     "build:client": "webpack -p",
     "deploy:client": "node script/aws-deploy-s3 dist react-native-lambda-starter",
     "open:prod": "node script/aws-open-s3 react-native-lambda-starter"
