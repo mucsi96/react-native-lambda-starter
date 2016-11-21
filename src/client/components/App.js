@@ -4,29 +4,22 @@ import {
   Text,
   View
 } from 'react-native';
-import Register from './Register';
+import RegisterForm from './RegisterForm';
 
 export default () => (
   <View style={styles.container}>
-    <Register/>
+    <RegisterForm/>
   </View>
 )
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingBottom: 11,
+    paddingTop: 11,
+    paddingLeft: 21,
+    paddingRight: 21,
+    backgroundColor: '#FFF',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    flexDirection: 'row'
   },
 });

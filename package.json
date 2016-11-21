@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start:android": "node node_modules/react-native/local-cli/cli.js run-android",
     "start": "webpack-dev-server --hot --inline --content-base src/client --port 8082 --open",
+    "start:android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "start:ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "aws:create-s3-bucket": "node script/aws-create-s3-bucket react-native-lambda-starter",
     "aws:create-cognito-user-pool": "node script/aws-create-cognito-user-pool config/aws-cognito-user-pool.json react-native-lambda-starter",
     "build:client": "webpack -p",
