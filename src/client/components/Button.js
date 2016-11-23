@@ -1,6 +1,6 @@
 import React, {  Component } from 'react';
 import { View, TouchableHighlight, Text, StyleSheet } from 'react-native';
-import {textColor} from '../theme';
+import {textColor} from '../common/theme';
 
 const styles = StyleSheet.create({
   container: {

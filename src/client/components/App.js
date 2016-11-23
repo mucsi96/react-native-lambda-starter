@@ -2,13 +2,16 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import RegisterForm from './RegisterForm';
 
 export default () => (
   <View style={styles.container}>
-    <RegisterForm/>
+    <ScrollView>
+      <RegisterForm/>
+    </ScrollView>
   </View>
 )
 

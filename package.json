@@ -13,14 +13,16 @@
     "open:prod": "node script/aws-open-s3 react-native-lambda-starter"
   },
   "dependencies": {
-    "amazon-cognito-identity-js": "^1.7.0",
+    "crypto-js": "^3.1.8",
     "react": "15.3.1",
     "react-dom": "15.3.1",
     "react-native": "0.37.0",
-    "react-native-web": "0.0.49"
+    "react-native-web": "0.0.49",
+    "tcomb-form-native": "^0.6.1"
   },
   "devDependencies": {
     "babel-loader": "^6.2.7",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-native": "1.9.0",

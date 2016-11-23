@@ -1,11 +1,12 @@
 import React, {  Component } from 'react';
 import {
+  Platform,
   StyleSheet,
   TextInput
 } from 'react-native';
-import {textColor} from '../theme';
+import {textColor} from '../common/theme';
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create(Platform.OS === 'web' ? {
   container: {
     color: textColor,
     fontSize: 14,
@@ -20,6 +21,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
 
   }
+} : {
+  container: {}
 });
 
 export default class FormFieldInput extends Component {
@@ -30,7 +33,9 @@ export default class FormFieldInput extends Component {
       value: props.value
     };
 
+
     this.onChange = this.onChange.bind(this);
+    this.onSubmitEditing = this.onSubmitEditing.bind(this);
   }
 
   onChange(event) {
@@ -38,14 +43,27 @@ export default class FormFieldInput extends Component {
     if (this.props.onChange) this.props.onChange(event);
   }
 
+  onSubmitEditing (event) {
+    console.log(this.props.next);
+    this.props.next && this.props.next.focus();
+  }
+
+  focus () {
+    this.refs.textInput.focus();
+  }
+
   render() {
     return (
       <TextInput
-        placeholder={this.props.placeholder}
-        placeholderTextColor="rgba(0,0,0,0.4)"
-        style={styles.container}
-        value={this.state.value}
-        onChange={this.onChange}
+        ref = "textInput"
+        placeholder = {this.props.placeholder}
+        placeholderTextColor = "rgba(0,0,0,0.4)"
+        style = {styles.container}
+        value = {this.state.value}
+        onChange = {this.onChange}
+        returnKeyType = {this.props.last ? 'done' : 'next'}
+        autoFocus = {this.props.first}
+        onSubmitEditing= {this.onSubmitEditing}
       />
     )
   }

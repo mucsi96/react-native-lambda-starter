@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text
 } from 'react-native';
-import {textColor} from '../theme';
+import {textColor} from '../common/theme';
 
 const styles = StyleSheet.create({
   container: {

@@ -4,15 +4,14 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View
+  View,
+  ScrollView
 } from 'react-native';
-import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js';
-import poolData from '../../../.aws-resources/cognito-user-pool.json';
+// import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js';
+import { signUp } from '../common/aws-cognito';
 import Header from './Header';
 import FormField from './FormField';
 import Button from './Button';
-
-const userPool = new CognitoUserPool(poolData);
 
 export default class RegisterForm extends Component {
   constructor(props) {
@@ -35,29 +34,40 @@ export default class RegisterForm extends Component {
   }
 
   handlePress() {
-    const attributes = [
-      new CognitoUserAttribute({
-        Name : 'email',
-        Value : this.state.email
-      })
-    ];
-    userPool.signUp(this.state.username, this.state.password, attributes, null, function(err, result){
-        if (err) {
-            alert(err);
-            return;
-        }
-        const cognitoUser = result.user;
-        console.log('user name is ' + cognitoUser.getUsername());
-    });
+    signUp(this.state.username, this.state.password, [
+      {Name: 'email', Value: this.state.email}
+    ]);
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Header>Register</Header>
-        <FormField label="Username" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
-        <FormField label="Email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange}/>
-        <FormField label="Password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}/>
+        <FormField
+          ref="username"
+          label="Username"
+          placeholder="Username"
+          value={this.state.username}
+          onChange={this.handleUsernameChange}
+          first={true}
+          next={this.refs.email}
+        />
+        <FormField
+          ref="email"
+          label="Email"
+          placeholder="Email"
+          value={this.state.email}
+          onChange={this.handleEmailChange}
+          next={this.refs.password}
+        />
+        <FormField
+          ref="password"
+          label="Password"
+          placeholder="Password"
+          value={this.state.password}
+          onChange={this.handlePasswordChange}
+          last={true}
+        />
         <View style={styles.buttons}>
           <Button onPress={this.handlePress}>Register</Button>
         </View>

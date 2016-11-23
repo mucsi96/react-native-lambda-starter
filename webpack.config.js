@@ -3,22 +3,25 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: {
-    main: './src/client/index.web.js',
-  },
+  entry:  ['babel-polyfill', './src/client/index.web.js'],
   output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist'),
       filename: "bundle.js"
   },
   module: {
     loaders: [
       {
         test: /\.js?$/,
-        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'src/client')
+        ],
         loader: 'babel',
         query: {
           presets: ['es2015', 'react'],
-        },
+          plugins: [
+            'transform-async-to-generator'
+          ]
+        }
       },
       { test: /\.json$/, loader: 'json-loader' }
     ]

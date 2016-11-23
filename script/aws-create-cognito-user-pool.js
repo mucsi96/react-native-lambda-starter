@@ -10,9 +10,11 @@ program
     const userPoolId = createUserPoolResult.toString().split('\t')[3];
     const createUserPoolClientResult = exec(`aws cognito-idp create-user-pool-client --user-pool-id ${userPoolId} --client-name ${clientName}`);
     const clientId = createUserPoolClientResult.toString().split('\t')[1];
+    const region = exec(`aws configure get region`).toString().trim();
     awsResource.createResource('cognito-user-pool', {
-      UserPoolId: userPoolId,
-      ClientId: clientId
+      userPoolId,
+      clientId,
+      region
     });
   });
 
